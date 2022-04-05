@@ -1,0 +1,35 @@
+---
+- name: send the mail
+  hosts: localhost
+  remote_user: root
+  vars_files:
+    - mail_var.yml
+  tasks:
+   # - command: "uptime"
+   #   register:  uptime_logs
+    
+    - mail:
+       host: 10.226.15.193
+       port: 25
+       to: "{{ mail_address }}"
+       subject: "UAT migration DAKC to Bank Chandivali on 7-March"
+       body: |
+          "Hi All,
+           
+            
+            Due to UAT migration DAKC to Bank Chandivali on 7-March. Following UAT application will be not available for 3 to 4 Days.
+             
+             We will post you status when application will up.
+              
+              Application UAT
+              ---------------
+              Artifactory UAT
+              Sonarqube UAT
+              Ansible UAT
+              Jenkin UAT
+              Github UAT
+               
+           Regards,
+           Vasudev Daxini
+           HDFC Bank | Tel: 022-30753358 | 9920347199
+           vasudev.daxini@hdfcbank.com"

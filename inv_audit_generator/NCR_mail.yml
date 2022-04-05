@@ -1,0 +1,26 @@
+---
+- name: send the mail
+  hosts: 10.226.73.29
+  remote_user: root
+  tasks:
+    - name: list the inventory file name 
+      shell: ls  /root/inv_audit_generator/*.xlsx
+      register:  inv_file
+    - name: print the file name 
+      debug:
+        msg: "{{ inv_file.stdout_lines}}"
+    - mail:
+       host: 10.226.15.193
+       port: 25
+       to: ansible.developer@hdfcbank.com,sarat.palukurty@hdfcbank.com,irfan.sheik@hdfcbank.com
+       from: ansible-report-developer-noreply@hdfcbank.com
+       subject: "Node Consumption Report"
+       body: |
+           Hello Team,
+           
+           PFA.
+           
+           Thanks and Regards,
+           Ansible Tower
+
+       attach: "{{ inv_file.stdout_lines }}"
