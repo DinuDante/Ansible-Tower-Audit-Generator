@@ -117,39 +117,48 @@ t_ip = "All IPs " + "(" + tip + ")"
 
 #Creating DataFrames
 
-df1 = pd.DataFrame({
+df1 = pd.DataFrame
+({
 "Organization ID" : org_id
 })
 
-df2 = pd.DataFrame({
+df2 = pd.DataFrame
+({
 "Inventory ID" : inventory_id
 })
 
-df3 = pd.DataFrame({
+df3 = pd.DataFrame
+({
 "Inventory Name" : inventory_name
 })
 
-df4 = pd.DataFrame({
+df4 = pd.DataFrame
+({
 "Created By" : created_by
 })
 
-df5 = pd.DataFrame({
+df5 = pd.DataFrame
+({
 "Host/IP" : ip
 })
 
-df6 = pd.DataFrame({
+df6 = pd.DataFrame
+({
 "Last Date Modified" : last_date_modified
 })
 
-df8 = pd.DataFrame({
+df8 = pd.DataFrame
+({
 t_ip : ip
 })
 
-df9 = pd.DataFrame({
+df9 = pd.DataFrame
+({
 uni_ip : unique_lst
 })
 
-df10 = pd.DataFrame({
+df10 = pd.DataFrame
+({
 "Inventory Pool" : inventory_pool
 })
 
