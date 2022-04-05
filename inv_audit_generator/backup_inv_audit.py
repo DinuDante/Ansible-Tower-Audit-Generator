@@ -12,6 +12,7 @@ ip = []
 created_by = []
 inventory_id = []
 inventory_name = []
+inventory_pool = []
 org_id = []
 hosts_count = []
 last_date_modified = []
@@ -89,6 +90,24 @@ tip = str(len(ip))
 unique_lst = list(set(ip))
 uip = str(len(unique_lst))
 
+x=0
+
+print(len(ip))
+print(len(unique_lst))
+
+for i in unique_lst:
+  st = ""
+  for j in range(len(ip)):
+    if i == ip[j]:
+  #    print (i,  j)
+   #   print ("\n")
+      st = st + "\n" + str(inventory_name[j])
+    else:
+      x=x+1
+ #     print(x)
+#      print("x")
+  inventory_pool.append(st)
+
 
 #Column Head Count String
 
@@ -130,23 +149,28 @@ df9 = pd.DataFrame({
 uni_ip : unique_lst
 })
 
+df10 = pd.DataFrame({
+"Inventory Pool" : inventory_pool
+})
+
 #Concating DataFrames
 
 df = pd.concat([df1, df2, df3, df4, df5, df6], axis=1)
 df2 = pd.concat([df8, df9], axis=1)
+df3 = pd.concat([df9,df10], axis=1)
 
 #Exporting Filename with TimeStamp
-filename = 'UAT_Inv_Details_'+time+'.xlsx'
+filename = 'PRODUCTION_Inv_Details_'+time+'.xlsx'
 
 #Creating Sheets and Exporting
 print("Generating Report...")
 df.to_excel(filename, 'Inv Details', index=False)
 excel_book = pxl.load_workbook(filename)
 with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-	writer.book = excel_book
-	writer.sheets = {
-	worksheet.title: worksheet
-	for worksheet in excel_book.worksheets
-	}
-	df2.to_excel(writer, 'IP Details', index=False)
-	writer.save()
+  writer.book = excel_book
+  writer.sheets = {
+  worksheet.title: worksheet
+  for worksheet in excel_book.worksheets}
+  df2.to_excel(writer, 'IP Details', index=False)
+  df3.to_excel(writer, 'IP vs Inventory', index=False)
+  writer.save()
