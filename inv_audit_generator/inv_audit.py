@@ -92,20 +92,16 @@ uip = str(len(unique_lst))
 
 x=0
 
-print(len(ip))
-print(len(unique_lst))
+#print(len(ip))
+#print(len(unique_lst))
 
 for i in unique_lst:
   st = ""
   for j in range(len(ip)):
     if i == ip[j]:
-  #    print (i,  j)
-   #   print ("\n")
       st = st + "\n" + str(inventory_name[j])
     else:
       x=x+1
- #     print(x)
-#      print("x")
   inventory_pool.append(st)
 
 
@@ -117,50 +113,23 @@ t_ip = "All IPs " + "(" + tip + ")"
 
 #Creating DataFrames
 
-df1 = pd.DataFrame
-({
-"Organization ID" : org_id
-})
+df1 = pd.DataFrame({"Organization ID" : org_id})
 
-df2 = pd.DataFrame
-({
-"Inventory ID" : inventory_id
-})
+df2 = pd.DataFrame({"Inventory ID" : inventory_id})
 
-df3 = pd.DataFrame
-({
-"Inventory Name" : inventory_name
-})
+df3 = pd.DataFrame({"Inventory Name" : inventory_name})
 
-df4 = pd.DataFrame
-({
-"Created By" : created_by
-})
+df4 = pd.DataFrame({"Created By" : created_by})
 
-df5 = pd.DataFrame
-({
-"Host/IP" : ip
-})
+df5 = pd.DataFrame({"Host/IP" : ip})
 
-df6 = pd.DataFrame
-({
-"Last Date Modified" : last_date_modified
-})
+df6 = pd.DataFrame({"Last Date Modified" : last_date_modified})
 
-df8 = pd.DataFrame
-({
-t_ip : ip
-})
+df8 = pd.DataFrame({t_ip : ip})
 
-df9 = pd.DataFrame
-({
-uni_ip : unique_lst
-})
+df9 = pd.DataFrame({uni_ip : unique_lst})
 
-df10 = pd.DataFrame
-({
-"Inventory Pool" : inventory_pool
-})
+df10 = pd.DataFrame({"Inventory Pool" : inventory_pool})
 
 #Concating DataFrames
 
