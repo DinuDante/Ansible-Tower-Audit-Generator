@@ -182,11 +182,10 @@ ujc = str(len(jt_id))
 
 
 for i in jt_id:
-  st=0
   for j in range(len(wf_id)):
     if i == wf_id[j]:
       st = st + 1
-workflow_job_frequency.append(st)
+  workflow_job_frequency.append(st)
 
 #Calculating the Frequency of Job Templates
 

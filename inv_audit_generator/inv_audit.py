@@ -92,9 +92,6 @@ uip = str(len(unique_lst))
 
 x=0
 
-#print(len(ip))
-#print(len(unique_lst))
-
 for i in unique_lst:
   st = ""
   for j in range(len(ip)):

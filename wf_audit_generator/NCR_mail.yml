@@ -1,19 +1,20 @@
 ---
 - name: send the mail
-  hosts: 10.226.73.29
+  hosts: <Instance IP/FQDN>
   remote_user: root
   tasks:
-    - name: list the wf file name 
-      shell: ls  /root/wf_audit_generator/*.xlsx
-      register:  wf_file
+    - name: list the inventory file name 
+      shell: ls  /root/inv_audit_generator/*.xlsx
+      register:  inv_file
     - name: print the file name 
       debug:
-        msg: "{{ wf_file.stdout_lines}}"
+        msg: "{{ inv_file.stdout_lines}}"
     - mail:
-       host: 10.226.15.193
+       host: <SMTP IP>
        port: 25
-       to: ansible.developer@hdfcbank.com,sarat.palukurty@hdfcbank.com,irfan.sheik@hdfcbank.com
-       subject: "WorkFlow Report"
+       to: <email@mail.com>
+       from: ansible-report-developer-noreply@mail.com
+       subject: "Workflow Report"
        body: |
            Hello Team,
            
@@ -22,4 +23,4 @@
            Thanks and Regards,
            Ansible Tower
 
-       attach: "{{ wf_file.stdout_lines }}"
+       attach: "{{ inv_file.stdout_lines }}"
